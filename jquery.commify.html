@@ -1,12 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <title>jQuery commify Plug-in</title>
+<style type="text/css">
+    th, td { padding: .25em }
+</style>
 <script type="text/javascript" src="jquery-1.5.1.min.js"></script>
 <script type="text/javascript" src="jquery.commify.js"></script>
 <script type="text/javascript">
 
     $(document).ready(function(){
-         $('div').commify();
+        $('tr').each(function (){
+            
+            $('td:eq(2)',$(this)).commify();
+            
+            if( $('td:eq(2)',$(this)).text() == $('td:eq(1)',$(this)).text() ){
+                $('td:eq(2)',$(this)).css({"background-color":"#ccf"});
+                $('td:eq(3)',$(this)).text('ok');
+            }else{
+                $('td:eq(2)',$(this)).css({"background-color":"#fcc"});
+                $('td:eq(3)',$(this)).text('NOK');
+            }
+            
+        });
     });
 
 </script>
@@ -14,18 +29,91 @@
 
     <h1>jQuery commify Plug-in</h1>
 
-    <div id="sample">
-        <p class="number1000">number 1000</p>
-        <ul>
-            <li>apple $12345678</li>
-            <li>banana $99999</li>
-        </ul>
-        
-        <p>1234.5678</p>
-        <p><span>2929.3939.4949</span></p>
-        <p><span>2929.3939.4949.5555</span></p>
-        
-        <span>9999<strong>8888</strong>9999</span>
-</div>
-    
+    <table border="1"><tbody>
+        <tr>
+            <th>test case</th>
+            <th>expected</th>
+            <th>commify result</th>
+            <th>judgement</th>
+            <th>note</th>
+        </tr>
+        <tr>
+            <td>number 10000000</td>
+            <td>number 10,000,000</td>
+            <td>number 10000000</td>
+            <td></td>
+            <td>normal text</td>
+        </tr>
+        <tr>
+            <td>12345 23456 34567</td>
+            <td>12,345 23,456 34,567</td>
+            <td>12345 23456 34567</td>
+            <td></td>
+            <td>three numbers</td>
+        </tr>
+        <tr>
+            <td><strong>12345<strong></td>
+            <td><strong>12345<strong></td>
+            <td><strong>12345<strong></td>
+            <td></td>
+            <td>text in child</td>
+        </tr>
+        <tr>
+            <td>33333<strong>44444</strong>55555</td>
+            <td>33,333<strong>44444</strong>55,555</td>
+            <td>33333<strong>44444</strong>55555</td>
+            <td></td>
+            <td>tag in between</td>
+        </tr>
+        <tr>
+            <td>-12345678</td>
+            <td>-12,345,678</td>
+            <td>-12345678</td>
+            <td></td>
+            <td>sign minus</td>
+        </tr>
+        <tr>
+            <td>+12345678</td>
+            <td>+12,345,678</td>
+            <td>+12345678</td>
+            <td></td>
+            <td>sign plus</td>
+        </tr>
+        <tr>
+            <td>12345678.90123</td>
+            <td>12,345,678.90123</td>
+            <td>12345678.90123</td>
+            <td></td>
+            <td>decimal</td>
+        </tr>
+        <tr>
+            <td>1234.5678.9012</td>
+            <td>1234.5678.9012</td>
+            <td>1234.5678.9012</td>
+            <td></td>
+            <td>not number</td>
+        </tr>
+        <tr>
+            <td>1234.5678.9012.3456</td>
+            <td>1234.5678.9012.3456</td>
+            <td>1234.5678.9012.3456</td>
+            <td></td>
+            <td>not number</td>
+        </tr>
+        <tr>
+            <td>12345678,90123</td>
+            <td>12345678,90123</td>
+            <td>12345678,90123</td>
+            <td></td>
+            <td>not number</td>
+        </tr>
+        <tr>
+            <td>1234-5678-9012</td>
+            <td>1,234-5,678-9,012</td>
+            <td>1234-5678-9012</td>
+            <td></td>
+            <td>three numbers</td>
+        </tr>
+    </tbody></table>
+
 </body></html>
