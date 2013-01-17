@@ -6,8 +6,7 @@
  * licensed under the MIT:
  *  http://www.opensource.org/licenses/mit-license.php
  *
- * Revision: $Rev$
- * Version: 0.0.2
+ * Version: 0.0.3
  *
 */
 (function($){

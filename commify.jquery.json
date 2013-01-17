@@ -1,0 +1,28 @@
+{
+    "name": "commify",
+    "version": "0.0.3",
+    "title": "jQuery Commify",
+    "author": {
+        "name": "WATANABE Hiroaki",
+        "url": "https://github.com/hiroaki/"
+        },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://www.opensource.org/licenses/mit-license.php"
+            }
+        ],
+    "dependencies": {
+        "jquery": ">=1.5"
+        },
+
+    "description": "jQuery plugin for commify number in all text of selection",
+    "keywords": [
+        "commify",
+        "numeric"
+        ],
+    "homepage": "https://github.com/hiroaki/jquery-commify",
+    "docs": "https://github.com/hiroaki/jquery-commify",
+    "download": "https://github.com/hiroaki/jquery-commify",
+    "bugs": "https://github.com/hiroaki/jquery-commify/issues"
+}
